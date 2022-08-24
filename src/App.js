@@ -12,7 +12,7 @@ function App() {
   }, []);
 
   const getItem = async () => {
-    let result = await fetch("http://localhost:8000");
+    let result = await fetch("https://shashi-todo-app.herokuapp.com/item");
     result = await result.json();
     setTasks(result);
     console.log(result);
@@ -23,7 +23,7 @@ function App() {
       if (!task) {
         alert("add item");
       } else {
-        let result = await axios.post("http://localhost:8000/add", {
+        let result = await axios.post("https://shashi-todo-app.herokuapp.com/add", {
           item: task,
         });
 
@@ -40,7 +40,7 @@ function App() {
 
   const deleteItem= async(id)=>{
     try{
-      let result=await axios.delete(`http://localhost:8000/delete/${id}`)
+      let result=await axios.delete(`https://shashi-todo-app.herokuapp.com/delete/${id}`)
       let newItem=tasks.filter(item=>item._id !==id);
       setTasks(newItem);
       getItem()
